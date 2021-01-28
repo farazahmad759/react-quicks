@@ -1,17 +1,19 @@
 import Handlebars from "handlebars";
 import fs from "fs";
 
-export const generateComponent = () => {
+export const generateComponent = (options) => {
+  let { type, componentName } = options;
   // read the file and use the callback to render
   fs.readFile(
-    "../../templates/component/javascript/component.hbs",
+    options.templateDirectory + "/javascript/component.js.hbs",
     function (err, data) {
       if (!err) {
         // make the buffer into a string
         var source = data.toString();
         // call the render function
-        renderToString(source, { ComponentName: "Button" });
+        renderToString(source, { componentName: componentName });
       } else {
+        console.log("err", err);
         // handle file read error
       }
     }

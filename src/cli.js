@@ -1,6 +1,7 @@
 import arg from "arg";
 import inquirer from "inquirer";
 import { createProject } from "./main";
+
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg(
     {

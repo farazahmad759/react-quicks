@@ -4,6 +4,7 @@ import ncp from "ncp";
 import path from "path";
 import { promisify } from "util";
 import { generateComponent } from "./generators";
+
 const access = promisify(fs.access);
 const copy = promisify(ncp);
 
@@ -47,9 +48,9 @@ export async function createProject(options) {
   console.log("Copy project files");
   await copyTemplateFiles(options);
 
-  // generateComponent
-  generateComponent();
   console.log("%s Project ready", chalk.green.bold("DONE"));
+  // generateComponent
+  generateComponent(options);
 
   return true;
 }
