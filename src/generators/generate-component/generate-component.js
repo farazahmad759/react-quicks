@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import fs from "fs";
-
+import { renderToString } from "./../../utils";
 export const generateComponent = (options) => {
   let { type, componentName } = options;
   // read the file and use the callback to render
@@ -21,11 +21,3 @@ export const generateComponent = (options) => {
 };
 
 export default generateComponent;
-
-// this will be called after the file is read
-function renderToString(source, data) {
-  var template = Handlebars.compile(source);
-  var outputString = template(data);
-  console.log(outputString);
-  return outputString;
-}
