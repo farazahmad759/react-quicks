@@ -1,0 +1,31 @@
+{
+  "name": "@farazahmad759/react-q",
+  "version": "0.0.1",
+  "description": "A CLI to quickly setup React js files",
+  "main": "src/index.js",
+  "bin": {
+    "@farazahmad759/react-q": "bin/react-q",
+    "@dricup/react-q": "bin/react-q",
+    "react-q": "bin/react-q"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "react-q"
+  ],
+  "author": "FARAZ AHMAD",
+  "license": "MIT",
+  "dependencies": {
+    "arg": "^5.0.0",
+    "chalk": "^4.1.0",
+    "esm": "^3.2.25",
+    "handlebars": "^4.7.6",
+    "inquirer": "^7.3.3",
+    "ncp": "^2.0.0"
+  }
+}
