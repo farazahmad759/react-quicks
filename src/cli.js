@@ -20,15 +20,18 @@ function parseArgumentsIntoOptions(rawArgs) {
     skipPrompts: args["--yes"] || false,
     git: args["--git"] || false,
     template: args._[0],
+    name: args._[1],
     runInstall: args["--install"] || false,
   };
 }
 async function promptForMissingOptions(options) {
   const defaultTemplate = "component";
+  const defaultName = "NewComponent";
   if (options.skipPrompts) {
     return {
       ...options,
       template: options.template || defaultTemplate,
+      name: options.name || defaultName,
     };
   }
 
@@ -43,14 +46,14 @@ async function promptForMissingOptions(options) {
     });
   }
 
-  if (!options.git) {
-    questions.push({
-      type: "confirm",
-      name: "git",
-      message: "Initialize a git repository?",
-      default: false,
-    });
-  }
+  //   if (!options.git) {
+  //     questions.push({
+  //       type: "confirm",
+  //       name: "git",
+  //       message: "Initialize a git repository?",
+  //       default: false,
+  //     });
+  //   }
 
   const answers = await inquirer.prompt(questions);
   return {

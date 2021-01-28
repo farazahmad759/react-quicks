@@ -1,1 +1,1 @@
-export { default as renderToString } from "./utils";
+export { renderToString, writeFile } from "./utils";
