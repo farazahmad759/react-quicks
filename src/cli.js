@@ -5,12 +5,9 @@ import { createProject } from "./main";
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg(
     {
-      "--git": Boolean,
       "--yes": Boolean,
-      "--install": Boolean,
-      "-g": "--git",
+      "--path": String,
       "-y": "--yes",
-      "-i": "--install",
     },
     {
       argv: rawArgs.slice(2),
@@ -18,10 +15,9 @@ function parseArgumentsIntoOptions(rawArgs) {
   );
   return {
     skipPrompts: args["--yes"] || false,
-    git: args["--git"] || false,
     template: args._[0],
     name: args._[1],
-    runInstall: args["--install"] || false,
+    outputDir: "/src/" + args["--path"] + "/" || "/src/components/",
   };
 }
 async function promptForMissingOptions(options) {
@@ -45,21 +41,10 @@ async function promptForMissingOptions(options) {
       default: defaultTemplate,
     });
   }
-
-  //   if (!options.git) {
-  //     questions.push({
-  //       type: "confirm",
-  //       name: "git",
-  //       message: "Initialize a git repository?",
-  //       default: false,
-  //     });
-  //   }
-
   const answers = await inquirer.prompt(questions);
   return {
     ...options,
     template: options.template || answers.template,
-    git: options.git || answers.git,
   };
 }
 

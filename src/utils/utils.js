@@ -14,3 +14,17 @@ export function writeFile(path, contents) {
   mkdirp.sync(getDirName(path));
   fs.writeFileSync(path, contents);
 }
+
+export function readdirAsync(path) {
+  return new Promise(function (resolve, reject) {
+    fs.readdir(path, function (error, result) {
+      if (error) {
+        reject(error);
+      } else {
+        let res = resolve(result);
+        console.log(result);
+        return res;
+      }
+    });
+  });
+}

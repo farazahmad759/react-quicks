@@ -1,1 +1,1 @@
-export { renderToString, writeFile } from "./utils";
+export { renderToString, writeFile, readdirAsync } from "./utils";
